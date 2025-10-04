@@ -1,6 +1,3 @@
-// Fix: Add React import to resolve type conflicts. Without this, TypeScript may resolve React types from different sources, causing incompatibility.
-import React from 'react';
-
 export interface UserInput {
   destinationCountry: string;
   destinationCity: string;
@@ -14,7 +11,8 @@ export interface Concern {
   title: string;
   description: string;
   prompt: (input: UserInput) => string;
-  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  // Use a simpler type for the Icon to avoid importing React in a type-only file
+  Icon: (props: any) => any;
   responseSchema?: Record<string, any>;
 }
 
